@@ -73,7 +73,7 @@ the files it might contain it was called a container file. The container file
 framework would provide all features associated to a container file. The
 framework provides a simple interface for creating and deleting files as well as
 reading and writing to a file in a uniform way. The interface hides the
-underlying representation of the data associated to the file increasing modularity.
+underlying representation of the data associated to the file thereby increasing modularity.
 
 \paragraph{The container file structure} \ \\
 We decided to implement our system closely related to the unix file system.
@@ -99,13 +99,13 @@ The superblock contains a stack of free blocks.
 If the stack has more than one element the top of the stack is removed and
 returned as a free block.
 Once the stack only has one element left and the element is not zero then this
-means that this last block contains further free blocks. The superblockís free
+means that this last block contains further free blocks. The superblock's free
 blocks stack is refreshed using the content of said block and the block itself
-is afterwards returned as being a free block.
+is afterwards returned as a free block.
 If the stack only contains the element zero that means there are currently no
 free blocks to be reallocated. In this case the system may allocate a
 completely new block at the end of the container file as long as the maximum
-capacity was not yet reached.
+capacity is not yet reached.
 The freeing process just works in reverse logic.
 
 \paragraph{Caching} \ \\
@@ -123,7 +123,7 @@ associated to the file.
 
 \subsubsection{The virtual file system} \ \\
 The virtual file system part of the VFS core implements the necessary higher
-level logic (file names, directory hierarchies, importing/exportingÖ) using the
+level logic (file names, directory hierarchies, importing/exporting) using the
 container file framework.
 
 \paragraph{Virtual disk} \ \\
@@ -139,7 +139,7 @@ Additionally information about the disk state (free/occupied space) can be
 retrieved using corresponding properties of a virtual disk item.
 
 \paragraph{Virtual directory} \ \\
-Virtual directories provide operations on the logical directory they represent. Currently repositories are stored as a sequential list of child item entries.
+Virtual directories provide operations on the logical directory they represent. Currently the contents of a directory are stored as a sequential list of child item entries.
 
 \paragraph{The public interface} \ \\
 \Cref{fig:coreapi} describes the public API of the VFS core.
